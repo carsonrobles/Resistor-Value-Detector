@@ -1,0 +1,87 @@
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
+| Date         : Fri Oct 26 17:54:34 2018
+| Host         : ubuntu running 64-bit Ubuntu 16.04.5 LTS
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xc7z010
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++-------------------------------------------------------------------+-------+
+|                               Status                              | Count |
++-------------------------------------------------------------------+-------+
+| Number of unique control sets                                     |    34 |
+| Minimum Number of register sites lost to control set restrictions |   108 |
++-------------------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             226 |           65 |
+| No           | No                    | Yes                    |              28 |           15 |
+| No           | Yes                   | No                     |              85 |           25 |
+| Yes          | No                    | No                     |              37 |           11 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             148 |           37 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++-----------------------------------------+-------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+------------------+----------------+
+|               Clock Signal              |                                             Enable Signal                                             |                                Set/Reset Signal                               | Slice Load Count | Bel Load Count |
++-----------------------------------------+-------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+------------------+----------------+
+|  clk_wiz_0_i/inst/clk_o                 |                                                                                                       | dvi2rgb_0_i/U0/TMDS_ClockingX/RdyLostReset/SyncAsyncx/oSyncStages[1]          |                1 |              1 |
+|  clk_wiz_0_i/inst/clk_o                 |                                                                                                       | dvi2rgb_0_i/U0/TMDS_ClockingX/LockLostReset/SyncAsyncx/oSyncStages[1]         |                1 |              2 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk |                                                                                                       | dvi2rgb_0_i/U0/TMDS_ClockingX/oSyncStages_reg[0]                              |                1 |              2 |
+|  clk_wiz_0_i/inst/clk_o                 |                                                                                                       | dvi2rgb_0_i/U0/TMDS_ClockingX/RdyLostReset/aRst_int                           |                1 |              2 |
+|  clk_wiz_0_i/inst/clk_o                 | dvi2rgb_0_i/U0/GenerateDDC.DDC_EEPROM/I2C_SlaveController/GlitchF_SCL/Filter.cntPeriods[3]_i_2__0_n_0 | dvi2rgb_0_i/U0/GenerateDDC.DDC_EEPROM/I2C_SlaveController/SyncSCL/SR[0]       |                1 |              4 |
+|  clk_wiz_0_i/inst/clk_o                 | dvi2rgb_0_i/U0/GenerateDDC.DDC_EEPROM/I2C_SlaveController/GlitchF_SDA/sel                             | dvi2rgb_0_i/U0/GenerateDDC.DDC_EEPROM/I2C_SlaveController/SyncSDA/SR[0]       |                1 |              4 |
+|  clk_wiz_0_i/inst/clk_o                 | dvi2rgb_0_i/U0/TMDS_ClockingX/rDlyRstCnt[4]_i_1_n_0                                                   | dvi2rgb_0_i/U0/TMDS_ClockingX/LockLostReset/SyncAsyncx/oSyncStages[1]         |                1 |              5 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk | dvi2rgb_0_i/U0/DataDecoders[2].DecoderX/PhaseAlignX/pCenterTap[5]_i_1_n_0                             |                                                                               |                2 |              5 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk | dvi2rgb_0_i/U0/DataDecoders[1].DecoderX/PhaseAlignX/pCenterTap[5]_i_1__0_n_0                          |                                                                               |                2 |              5 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk | dvi2rgb_0_i/U0/DataDecoders[0].DecoderX/PhaseAlignX/pCenterTap[5]_i_1__1_n_0                          |                                                                               |                2 |              5 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk |                                                                                                       | dvi2rgb_0_i/U0/DataDecoders[2].DecoderX/PhaseAlignX/pCtlTknRst                |                3 |              7 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk |                                                                                                       | dvi2rgb_0_i/U0/DataDecoders[1].DecoderX/PhaseAlignX/pCtlTknRst                |                3 |              7 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk |                                                                                                       | dvi2rgb_0_i/U0/DataDecoders[0].DecoderX/PhaseAlignX/pCtlTknRst                |                2 |              7 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk |                                                                                                       | dvi2rgb_0_i/U0/DataDecoders[1].DecoderX/ChannelBondX/pDataIn_reg[7][0]        |                2 |              8 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk |                                                                                                       | dvi2rgb_0_i/U0/DataDecoders[0].DecoderX/ChannelBondX/pDataIn_reg[7][0]        |                3 |              8 |
+|  clk_wiz_0_i/inst/clk_o                 | dvi2rgb_0_i/U0/GenerateDDC.DDC_EEPROM/I2C_SlaveController/dataByte[7]_i_1_n_0                         |                                                                               |                2 |              8 |
+|  clk_wiz_0_i/inst/clk_o                 |                                                                                                       | dvi2rgb_0_i/U0/LockLostReset/SyncAsyncx/oSyncStages[1]                        |                5 |              9 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk | dvi2rgb_0_i/U0/DataDecoders[1].DecoderX/ChannelBondX/pRdEn                                            | dvi2rgb_0_i/U0/DataDecoders[1].DecoderX/PhaseAlignX/SR[0]                     |                2 |             10 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk | dvi2rgb_0_i/U0/DataDecoders[0].DecoderX/ChannelBondX/pRdEn                                            | dvi2rgb_0_i/U0/DataDecoders[1].DecoderX/PhaseAlignX/SR[0]                     |                3 |             10 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk | dvi2rgb_0_i/U0/DataDecoders[2].DecoderX/ChannelBondX/pRdEn                                            | dvi2rgb_0_i/U0/DataDecoders[1].DecoderX/PhaseAlignX/SR[0]                     |                2 |             10 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk | dvi2rgb_0_i/U0/DataDecoders[0].DecoderX/PhaseAlignX/pStateNxt                                         | dvi2rgb_0_i/U0/DataDecoders[0].DecoderX/pAlignRst_reg_n_0                     |                2 |             11 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk |                                                                                                       | dvi2rgb_0_i/U0/DataDecoders[2].DecoderX/ChannelBondX/pC1_reg[0]               |                4 |             11 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk | dvi2rgb_0_i/U0/DataDecoders[1].DecoderX/PhaseAlignX/pStateNxt                                         | dvi2rgb_0_i/U0/DataDecoders[1].DecoderX/pAlignRst_reg_n_0                     |                4 |             11 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk | dvi2rgb_0_i/U0/DataDecoders[2].DecoderX/PhaseAlignX/pStateNxt                                         | dvi2rgb_0_i/U0/DataDecoders[2].DecoderX/pAlignRst                             |                3 |             11 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk |                                                                                                       | dvi2rgb_0_i/U0/LockLostReset/SyncAsyncx/oSyncStages[1]                        |                6 |             12 |
+|  clk_wiz_0_i/inst/clk_o                 | dvi2rgb_0_i/U0/GenerateDDC.DDC_EEPROM/I2C_SlaveController/E[0]                                        |                                                                               |                3 |             14 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk |                                                                                                       | rgb2vga_0_i/U0/int_pData[23]_i_1_n_0                                          |                3 |             16 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk |                                                                                                       | dvi2rgb_0_i/U0/DataDecoders[1].DecoderX/PhaseAlignX/SR[0]                     |                5 |             21 |
+|  clk_wiz_0_i/inst/clk_o                 | dvi2rgb_0_i/U0/DataDecoders[0].DecoderX/rTimeoutCnt[0]_i_1__1_n_0                                     | dvi2rgb_0_i/U0/DataDecoders[0].DecoderX/SyncBaseRst/SyncAsyncx/oSyncStages[1] |                6 |             24 |
+|  clk_wiz_0_i/inst/clk_o                 | dvi2rgb_0_i/U0/DataDecoders[1].DecoderX/rTimeoutCnt[0]_i_1__0_n_0                                     | dvi2rgb_0_i/U0/DataDecoders[1].DecoderX/SyncBaseRst/SyncAsyncx/oSyncStages[1] |                6 |             24 |
+|  clk_wiz_0_i/inst/clk_o                 | dvi2rgb_0_i/U0/DataDecoders[2].DecoderX/rTimeoutCnt[0]_i_1_n_0                                        | dvi2rgb_0_i/U0/DataDecoders[2].DecoderX/SyncBaseRst/SyncAsyncx/oSyncStages[1] |                6 |             24 |
+|  clk_wiz_0_i/inst/clk_o                 |                                                                                                       |                                                                               |               17 |             40 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk | dvi2rgb_0_i/U0/DataDecoders[0].DecoderX/PhaseAlignX/pAllVld                                           |                                                                               |                6 |             48 |
+|  dvi2rgb_0_i/U0/TMDS_ClockingX/PixelClk |                                                                                                       |                                                                               |               48 |            186 |
++-----------------------------------------+-------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+------------------+----------------+
+
+
