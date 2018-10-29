@@ -27,15 +27,7 @@ module top (
 // SYSTEM CLK DOMAIN
 //////////////////////////////
 
-  /*logic [ 1:0] led1 = '0;
-  logic [25:0] cnt1 = '0;
 
-  always_ff @ (posedge clk)
-    cnt1 <= cnt1 + 1;
-
-  always_ff @ (posedge clk)
-    if (&cnt1)
-      led1 <= ~led1;*/
 
 //////////////////////////////
 // HDMI CLK DOMAIN
@@ -51,16 +43,6 @@ module top (
     .reset  (0),
     .locked (hdmi_clk_lck)
   );
-
-  /*logic [ 1:0] led2 = '0;
-  logic [25:0] cnt2 = '0;
-
-  always_ff @ (posedge hdmi_clk)
-    cnt2 <= cnt2 + 1;
-
-  always_ff @ (posedge hdmi_clk)
-    if (&cnt2)
-      led2 <= ~led2;*/
 
   wire [23:0] vid_data;
   wire        vid_vde;
