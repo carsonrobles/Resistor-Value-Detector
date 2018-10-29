@@ -54,6 +54,7 @@ module top (
   assign ddc_sda_io = (~ddc_sda_t) ? ddc_sda_o : 1'bz;
   assign ddc_scl_io = (~ddc_scl_t) ? ddc_scl_o : 1'bz;
 
+  // DVI to RGB converter
   dvi2rgb_ip dvi2rgb_ip_i (
     .TMDS_Clk_p    (TMDS_Clk_p),
     .TMDS_Clk_n    (TMDS_Clk_n),
@@ -85,6 +86,7 @@ module top (
   wire        vga_hsync;
   wire        vga_vsync;
 
+  // placeholder for now, process data
   img_proc img_proc_i (
     .clk     (pix_clk),
     .data_i  (vid_data),
@@ -97,6 +99,7 @@ module top (
     .vsync_o (vga_vsync)
   );
 
+  // RGB to VGA converter
   rgb2vga_ip rgb2vga_ip_i (
     .rgb_pData  (vga_data),
     .rgb_pVDE   (vga_vde),
