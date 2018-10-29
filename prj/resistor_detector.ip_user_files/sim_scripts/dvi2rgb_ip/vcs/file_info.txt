@@ -1,0 +1,15 @@
+Language File-Name           IP          Library         File-Path                                              
+VHDL,    SyncBase.vhd,       dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/SyncBase.vhd      
+VHDL,    EEPROM_8b.vhd,      dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/EEPROM_8b.vhd     
+VHDL,    TWI_SlaveCtl.vhd,   dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/TWI_SlaveCtl.vhd  
+VHDL,    GlitchFilter.vhd,   dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/GlitchFilter.vhd  
+VHDL,    SyncAsync.vhd,      dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/SyncAsync.vhd     
+VHDL,    DVI_Constants.vhd,  dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/DVI_Constants.vhd 
+VHDL,    SyncAsyncReset.vhd, dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/SyncAsyncReset.vhd
+VHDL,    PhaseAlign.vhd,     dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/PhaseAlign.vhd    
+VHDL,    InputSERDES.vhd,    dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/InputSERDES.vhd   
+VHDL,    ChannelBond.vhd,    dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/ChannelBond.vhd   
+VHDL,    TMDS_Decoder.vhd,   dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/TMDS_Decoder.vhd  
+VHDL,    TMDS_Clocking.vhd,  dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/TMDS_Clocking.vhd 
+VHDL,    dvi2rgb.vhd,        dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/src/dvi2rgb.vhd       
+VHDL,    dvi2rgb_ip.vhd,     dvi2rgb_ip, xil_defaultlib, ../../../../../src/ip/dvi2rgb_ip/sim/dvi2rgb_ip.vhd    

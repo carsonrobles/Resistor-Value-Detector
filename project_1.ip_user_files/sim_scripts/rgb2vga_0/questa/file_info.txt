@@ -1,3 +1,0 @@
-Language File-Name      IP         Library         File-Path                                                          
-VHDL,    rgb2vga.vhd,   rgb2vga_0, xil_defaultlib, ../../../../project_1.srcs/sources_1/ip/rgb2vga_0/src/rgb2vga.vhd  
-VHDL,    rgb2vga_0.vhd, rgb2vga_0, xil_defaultlib, ../../../../project_1.srcs/sources_1/ip/rgb2vga_0/sim/rgb2vga_0.vhd
