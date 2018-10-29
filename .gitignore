@@ -8,4 +8,5 @@
 *.runs
 *.sim
 *.srcs
+*.ip_user_files
 .Xil
