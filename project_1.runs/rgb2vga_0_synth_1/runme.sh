@@ -20,7 +20,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/home/carson/poly/cpe439/hdmi_2_vga/project_1.runs/rgb2vga_0_synth_1'
+HD_PWD='/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.runs/rgb2vga_0_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

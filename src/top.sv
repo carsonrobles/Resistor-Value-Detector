@@ -23,20 +23,17 @@ module top (
   output wire [3:0] led
 );
 
-assign HDMI_HPD    = 1;
-assign HDMI_OUT_EN = 0;
-
 //////////////////////////////
 // SYSTEM CLK DOMAIN
 //////////////////////////////
 
-  reg [ 1:0] led1 = 0;
-  reg [25:0] cnt1 = 0;
+  logic [ 1:0] led1 = '0;
+  logic [25:0] cnt1 = '0;
 
-  always @ (posedge clk)
+  always_ff @ (posedge clk)
     cnt1 <= cnt1 + 1;
 
-  always @ (posedge clk)
+  always_ff @ (posedge clk)
     if (&cnt1)
       led1 <= ~led1;
 
@@ -45,21 +42,22 @@ assign HDMI_OUT_EN = 0;
 //////////////////////////////
 
   wire hdmi_clk;
+  wire hdmi_clk_lck;
 
   clk_wiz_0 clk_wiz_0_i (
     .clk_i  (clk),
     .clk_o  (hdmi_clk),
     .reset  (0),
-    .locked ( )
+    .locked (hdmi_clk_lck)
   );
 
-  reg [ 1:0] led2 = 0;
-  reg [25:0] cnt2 = 0;
+  logic [ 1:0] led2 = '0;
+  logic [25:0] cnt2 = '0;
 
-  always @ (posedge hdmi_clk)
+  always_ff @ (posedge hdmi_clk)
     cnt2 <= cnt2 + 1;
 
-  always @ (posedge hdmi_clk)
+  always_ff @ (posedge hdmi_clk)
     if (&cnt2)
       led2 <= ~led2;
 
@@ -68,6 +66,7 @@ assign HDMI_OUT_EN = 0;
   wire        vid_hsync;
   wire        vid_vsync;
   wire        pix_clk;
+  wire        pix_clk_lck;
 
   assign ddc_sda_io = (~ddc_sda_t) ? ddc_sda_o : 1'bz;
   assign ddc_scl_io = (~ddc_scl_t) ? ddc_scl_o : 1'bz;
@@ -84,7 +83,7 @@ assign HDMI_OUT_EN = 0;
     .vid_pHSync    (vid_hsync),
     .vid_pVSync    (vid_vsync),
     .PixelClk      (pix_clk),
-    .aPixelClkLckd ( ),
+    .aPixelClkLckd (pix_clk_lck),
     .DDC_SDA_I     (ddc_sda_io),
     .DDC_SDA_O     (ddc_sda_o),
     .DDC_SDA_T     (ddc_sda_t),
@@ -105,7 +104,6 @@ assign HDMI_OUT_EN = 0;
 
   img_proc img_proc_i (
     .clk     (pix_clk),
-    .val     (sw),
     .data_i  (vid_data),
     .vde_i   (vid_vde),
     .hsync_i (vid_hsync),
@@ -133,6 +131,8 @@ assign HDMI_OUT_EN = 0;
 // ASSIGN OUTPUTS
 //////////////////////////////
 
-  assign led = {vid_data[1], vid_hsync, vid_vsync, vga_pHSync};
+  assign HDMI_HPD    = 1;
+  assign HDMI_OUT_EN = 0;
+  assign led         = {hdmi_clk_lck, pix_clk_lck, vid_hsync, vga_hsync};
 
 endmodule

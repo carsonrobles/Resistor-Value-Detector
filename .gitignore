@@ -1,0 +1,10 @@
+# vivado files
+*.jou
+*.log
+*.debug
+*.str
+*.cache
+*.hw
+*.runs
+*.sim
+*.srcs

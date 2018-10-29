@@ -44,39 +44,36 @@ proc step_failed { step } {
 
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 
 start_step init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param xicom.use_bs_reader 1
   set_property design_mode GateLvl [current_fileset]
-  set_property webtalk.parent_dir /home/carson/poly/cpe439/hdmi_2_vga/project_1.cache/wt [current_project]
-  set_property parent.project_path /home/carson/poly/cpe439/hdmi_2_vga/project_1.xpr [current_project]
+  set_property webtalk.parent_dir {/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.cache/wt} [current_project]
+  set_property parent.project_path {/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.xpr} [current_project]
   set_property ip_repo_paths {
-  /home/carson/poly/cpe439/hdmi_2_vga/project_1.cache/ip
+  {/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.cache/ip}
   /home/carson/poly/cpe439/vivado-library-master
 } [current_project]
-  set_property ip_output_repo /home/carson/poly/cpe439/hdmi_2_vga/project_1.cache/ip [current_project]
-  add_files -quiet /home/carson/poly/cpe439/hdmi_2_vga/project_1.runs/synth_1/top.dcp
-  add_files -quiet /home/carson/poly/cpe439/hdmi_2_vga/project_1.runs/clk_wiz_0_synth_1/clk_wiz_0.dcp
-  set_property netlist_only true [get_files /home/carson/poly/cpe439/hdmi_2_vga/project_1.runs/clk_wiz_0_synth_1/clk_wiz_0.dcp]
-  add_files -quiet /home/carson/poly/cpe439/hdmi_2_vga/project_1.runs/dvi2rgb_0_synth_1/dvi2rgb_0.dcp
-  set_property netlist_only true [get_files /home/carson/poly/cpe439/hdmi_2_vga/project_1.runs/dvi2rgb_0_synth_1/dvi2rgb_0.dcp]
-  add_files -quiet /home/carson/poly/cpe439/hdmi_2_vga/project_1.runs/rgb2vga_0_synth_1/rgb2vga_0.dcp
-  set_property netlist_only true [get_files /home/carson/poly/cpe439/hdmi_2_vga/project_1.runs/rgb2vga_0_synth_1/rgb2vga_0.dcp]
-  read_xdc -mode out_of_context -ref clk_wiz_0 -cells inst /home/carson/poly/cpe439/hdmi_2_vga/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc
-  set_property processing_order EARLY [get_files /home/carson/poly/cpe439/hdmi_2_vga/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
-  read_xdc -prop_thru_buffers -ref clk_wiz_0 -cells inst /home/carson/poly/cpe439/hdmi_2_vga/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc
-  set_property processing_order EARLY [get_files /home/carson/poly/cpe439/hdmi_2_vga/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
-  read_xdc -ref clk_wiz_0 -cells inst /home/carson/poly/cpe439/hdmi_2_vga/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc
-  set_property processing_order EARLY [get_files /home/carson/poly/cpe439/hdmi_2_vga/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
-  read_xdc -mode out_of_context -ref dvi2rgb_0 -cells U0 /home/carson/poly/cpe439/hdmi_2_vga/project_1.srcs/sources_1/ip/dvi2rgb_0_2/src/dvi2rgb_ooc.xdc
-  set_property processing_order EARLY [get_files /home/carson/poly/cpe439/hdmi_2_vga/project_1.srcs/sources_1/ip/dvi2rgb_0_2/src/dvi2rgb_ooc.xdc]
-  read_xdc -ref dvi2rgb_0 -cells U0 /home/carson/poly/cpe439/hdmi_2_vga/project_1.srcs/sources_1/ip/dvi2rgb_0_2/src/dvi2rgb.xdc
-  set_property processing_order EARLY [get_files /home/carson/poly/cpe439/hdmi_2_vga/project_1.srcs/sources_1/ip/dvi2rgb_0_2/src/dvi2rgb.xdc]
-  read_xdc /home/carson/poly/cpe439/hdmi_2_vga/constraints.xdc
+  set_property ip_output_repo {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.cache/ip}} [current_project]
+  add_files -quiet {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.runs/synth_1/top.dcp}}
+  add_files -quiet {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.runs/clk_wiz_0_synth_1/clk_wiz_0.dcp}}
+  set_property netlist_only true [get_files {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.runs/clk_wiz_0_synth_1/clk_wiz_0.dcp}}]
+  add_files -quiet {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.runs/dvi2rgb_0_synth_1/dvi2rgb_0.dcp}}
+  set_property netlist_only true [get_files {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.runs/dvi2rgb_0_synth_1/dvi2rgb_0.dcp}}]
+  add_files -quiet {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.runs/rgb2vga_0_synth_1/rgb2vga_0.dcp}}
+  set_property netlist_only true [get_files {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.runs/rgb2vga_0_synth_1/rgb2vga_0.dcp}}]
+  read_xdc -mode out_of_context -ref clk_wiz_0 -cells inst {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc}}
+  set_property processing_order EARLY [get_files {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc}}]
+  read_xdc -prop_thru_buffers -ref clk_wiz_0 -cells inst {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc}}
+  set_property processing_order EARLY [get_files {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc}}]
+  read_xdc -ref clk_wiz_0 -cells inst {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc}}
+  set_property processing_order EARLY [get_files {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc}}]
+  read_xdc -mode out_of_context -ref dvi2rgb_0 -cells U0 {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.srcs/sources_1/ip/dvi2rgb_0_2/src/dvi2rgb_ooc.xdc}}
+  set_property processing_order EARLY [get_files {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.srcs/sources_1/ip/dvi2rgb_0_2/src/dvi2rgb_ooc.xdc}}]
+  read_xdc -ref dvi2rgb_0 -cells U0 {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.srcs/sources_1/ip/dvi2rgb_0_2/src/dvi2rgb.xdc}}
+  set_property processing_order EARLY [get_files {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/project_1.srcs/sources_1/ip/dvi2rgb_0_2/src/dvi2rgb.xdc}}]
+  read_xdc {{/mnt/hgfs/Google Drive/poly/CPE439/Resistor-Value-Detector/constraints.xdc}}
   link_design -top top -part xc7z010clg400-1
   close_msg_db -file init_design.pb
 } RESULT]
