@@ -23,7 +23,7 @@ compile: $(BIT)
 # TODO (carson): script doesn't work
 #prog:
 	#vivado -nojournal -log $(PROJ_PATH)/prj/program.log -mode batch \
-		-source $(PROJ_PATH)/scripts/program.tcl -tclargs $(PART) $(TOP) $(CONSTR) "$(SRC)" $@
+		#-source $(PROJ_PATH)/scripts/program.tcl -tclargs $(PART) $(TOP) $(CONSTR) "$(SRC)" $@
 
 synth: $(SYNTH_DCP)
 place: $(PLACE_DCP)
@@ -70,7 +70,7 @@ $(BIT): $(PROJ_PATH)/scripts/bitstream.tcl Makefile $(ROUTE_DCP)
 clean:
 	# remove misc Xilinx files
 	rm -rf .Xil usage_statistics_webtalk.*
-	rm -rf $(PROJ_PATH)/prj/vivado* $(PROJ_PATH)/prj/*.log
+	rm -rf $(PROJ_PATH)/prj/*.log
 
 	# remove generated checkpoint files and bit file
 	rm -rf $(SYNTH_DCP) $(PLACE_DCP) $(ROUTE_DCP) $(BIT)

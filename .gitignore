@@ -11,5 +11,6 @@
 *.ip_user_files
 *.dcp
 *.bit
+*.zip
 usage_statistics_webtalk.*
 .Xil
