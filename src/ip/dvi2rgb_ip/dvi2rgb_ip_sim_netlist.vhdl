@@ -1,7 +1,7 @@
 -- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
--- Date        : Sun Oct 28 21:21:32 2018
+-- Date        : Tue Oct 30 13:13:47 2018
 -- Host        : ubuntu running 64-bit Ubuntu 16.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/carson/poly/cpe439/Resistor-Value-Detector/src/ip/dvi2rgb_ip/dvi2rgb_ip_sim_netlist.vhdl
@@ -10689,12 +10689,12 @@ begin
 DVI_ClkGenerator: unisim.vcomponents.MMCME2_ADV
     generic map(
       BANDWIDTH => "OPTIMIZED",
-      CLKFBOUT_MULT_F => 5.000000,
+      CLKFBOUT_MULT_F => 10.000000,
       CLKFBOUT_PHASE => 0.000000,
       CLKFBOUT_USE_FINE_PS => false,
-      CLKIN1_PERIOD => 6.000000,
+      CLKIN1_PERIOD => 12.000000,
       CLKIN2_PERIOD => 0.000000,
-      CLKOUT0_DIVIDE_F => 1.000000,
+      CLKOUT0_DIVIDE_F => 2.000000,
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => false,
@@ -13657,7 +13657,7 @@ entity dvi2rgb_ip_dvi2rgb is
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of dvi2rgb_ip_dvi2rgb : entity is "dvi2rgb";
   attribute kClkRange : integer;
-  attribute kClkRange of dvi2rgb_ip_dvi2rgb : entity is 1;
+  attribute kClkRange of dvi2rgb_ip_dvi2rgb : entity is 2;
   attribute kEmulateDDC : string;
   attribute kEmulateDDC of dvi2rgb_ip_dvi2rgb : entity is "TRUE";
   attribute kIDLY_TapValuePs : integer;
@@ -13833,7 +13833,7 @@ end dvi2rgb_ip;
 architecture STRUCTURE of dvi2rgb_ip is
   signal NLW_U0_SerialClk_UNCONNECTED : STD_LOGIC;
   attribute kClkRange : integer;
-  attribute kClkRange of U0 : label is 1;
+  attribute kClkRange of U0 : label is 2;
   attribute kEmulateDDC : string;
   attribute kEmulateDDC of U0 : label is "TRUE";
   attribute kIDLY_TapValuePs : integer;

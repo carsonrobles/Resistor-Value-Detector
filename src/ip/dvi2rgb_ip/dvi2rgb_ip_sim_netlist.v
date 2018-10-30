@@ -1,7 +1,7 @@
 // Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
-// Date        : Sun Oct 28 21:21:32 2018
+// Date        : Tue Oct 30 13:13:47 2018
 // Host        : ubuntu running 64-bit Ubuntu 16.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /home/carson/poly/cpe439/Resistor-Value-Detector/src/ip/dvi2rgb_ip/dvi2rgb_ip_sim_netlist.v
@@ -75,7 +75,7 @@ module dvi2rgb_ip
   wire vid_pVSync;
   wire NLW_U0_SerialClk_UNCONNECTED;
 
-  (* kClkRange = "1" *) 
+  (* kClkRange = "2" *) 
   (* kEmulateDDC = "TRUE" *) 
   (* kIDLY_TapValuePs = "78" *) 
   (* kIDLY_TapWidth = "5" *) 
@@ -7910,12 +7910,12 @@ module dvi2rgb_ip_TMDS_Clocking
   (* box_type = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(5.000000),
+    .CLKFBOUT_MULT_F(10.000000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
-    .CLKIN1_PERIOD(6.000000),
+    .CLKIN1_PERIOD(12.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(1.000000),
+    .CLKOUT0_DIVIDE_F(2.000000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
@@ -10896,7 +10896,7 @@ module dvi2rgb_ip_TWI_SlaveCtl
         .O(D[6]));
 endmodule
 
-(* ORIG_REF_NAME = "dvi2rgb" *) (* kClkRange = "1" *) (* kEmulateDDC = "TRUE" *) 
+(* ORIG_REF_NAME = "dvi2rgb" *) (* kClkRange = "2" *) (* kEmulateDDC = "TRUE" *) 
 (* kIDLY_TapValuePs = "78" *) (* kIDLY_TapWidth = "5" *) (* kRstActiveHigh = "FALSE" *) 
 module dvi2rgb_ip_dvi2rgb
    (TMDS_Clk_p,

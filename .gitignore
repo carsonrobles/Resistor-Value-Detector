@@ -9,4 +9,7 @@
 *.sim
 *.srcs
 *.ip_user_files
+*.dcp
+*.bit
+usage_statistics_webtalk.*
 .Xil

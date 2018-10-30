@@ -1,7 +1,7 @@
 -- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
--- Date        : Sun Oct 28 21:21:32 2018
+-- Date        : Tue Oct 30 13:13:47 2018
 -- Host        : ubuntu running 64-bit Ubuntu 16.04.5 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /home/carson/poly/cpe439/Resistor-Value-Detector/src/ip/dvi2rgb_ip/dvi2rgb_ip_stub.vhdl
