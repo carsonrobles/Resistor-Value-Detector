@@ -1,4 +1,5 @@
-PROJ_PATH = /home/carson/poly/cpe439/Resistor-Value-Detector
+#PROJ_PATH = /home/carson/poly/cpe439/Resistor-Value-Detector
+PROJ_PATH = .
 PART      = xc7z010clg400-1
 
 CONSTR    = $(PROJ_PATH)/src/xdc/constraints.xdc
