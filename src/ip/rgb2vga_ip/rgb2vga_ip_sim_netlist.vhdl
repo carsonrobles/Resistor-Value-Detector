@@ -1,10 +1,10 @@
--- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+-- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
--- Date        : Sun Oct 28 21:13:48 2018
+-- Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
+-- Date        : Mon Nov 12 18:42:10 2018
 -- Host        : ubuntu running 64-bit Ubuntu 16.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
---               /home/carson/poly/cpe439/Resistor-Value-Detector/src/ip/rgb2vga_ip/rgb2vga_ip_sim_netlist.vhdl
+--               /home/carson/poly/cpe439/tmp/Resistor-Value-Detector/src/ip/rgb2vga_ip/rgb2vga_ip_sim_netlist.vhdl
 -- Design      : rgb2vga_ip
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -211,10 +211,18 @@ entity rgb2vga_ip is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of rgb2vga_ip : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of rgb2vga_ip : entity is "rgb2vga,Vivado 2015.4";
+  attribute x_core_info of rgb2vga_ip : entity is "rgb2vga,Vivado 2018.2";
 end rgb2vga_ip;
 
 architecture STRUCTURE of rgb2vga_ip is
+  attribute x_interface_info : string;
+  attribute x_interface_info of PixelClk : signal is "xilinx.com:signal:clock:1.0 signal_clock CLK";
+  attribute x_interface_parameter : string;
+  attribute x_interface_parameter of PixelClk : signal is "XIL_INTERFACENAME signal_clock, ASSOCIATED_BUSIF vid_in";
+  attribute x_interface_info of rgb_pHSync : signal is "xilinx.com:interface:vid_io:1.0 vid_in HSYNC";
+  attribute x_interface_info of rgb_pVDE : signal is "xilinx.com:interface:vid_io:1.0 vid_in ACTIVE_VIDEO";
+  attribute x_interface_info of rgb_pVSync : signal is "xilinx.com:interface:vid_io:1.0 vid_in VSYNC";
+  attribute x_interface_info of rgb_pData : signal is "xilinx.com:interface:vid_io:1.0 vid_in DATA";
 begin
 U0: entity work.rgb2vga_ip_rgb2vga
      port map (

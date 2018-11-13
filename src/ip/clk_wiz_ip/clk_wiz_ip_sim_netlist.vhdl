@@ -1,10 +1,10 @@
--- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+-- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
--- Date        : Sun Oct 28 21:15:12 2018
+-- Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
+-- Date        : Mon Nov 12 18:43:04 2018
 -- Host        : ubuntu running 64-bit Ubuntu 16.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
---               /home/carson/poly/cpe439/Resistor-Value-Detector/src/ip/clk_wiz_ip/clk_wiz_ip_sim_netlist.vhdl
+--               /home/carson/poly/cpe439/tmp/Resistor-Value-Detector/src/ip/clk_wiz_ip/clk_wiz_ip_sim_netlist.vhdl
 -- Design      : clk_wiz_ip
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -16,10 +16,10 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity clk_wiz_ip_clk_wiz_ip_clk_wiz is
   port (
-    clk_i : in STD_LOGIC;
     clk_o : out STD_LOGIC;
     reset : in STD_LOGIC;
-    locked : out STD_LOGIC
+    locked : out STD_LOGIC;
+    clk_i : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of clk_wiz_ip_clk_wiz_ip_clk_wiz : entity is "clk_wiz_ip_clk_wiz";
@@ -131,15 +131,13 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity clk_wiz_ip is
   port (
-    clk_i : in STD_LOGIC;
     clk_o : out STD_LOGIC;
     reset : in STD_LOGIC;
-    locked : out STD_LOGIC
+    locked : out STD_LOGIC;
+    clk_i : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of clk_wiz_ip : entity is true;
-  attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of clk_wiz_ip : entity is "clk_wiz_ip,clk_wiz_v5_2_1,{component_name=clk_wiz_ip,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=PLL,num_out_clk=1,clkin1_period=8.0,clkin2_period=10.0,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}";
 end clk_wiz_ip;
 
 architecture STRUCTURE of clk_wiz_ip is

@@ -1,3 +1,4 @@
+
 // 
 // (c) Copyright 2008 - 2013 Xilinx, Inc. All rights reserved.
 // 
@@ -54,7 +55,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// CLK_OUT1___200.000______0.000______50.0______109.241_____96.948
+// ___clk_o___200.000______0.000______50.0______109.241_____96.948
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -69,11 +70,11 @@
 
   clk_wiz_ip instance_name
    (
-   // Clock in ports
-    .clk_i(clk_i),      // input clk_i
     // Clock out ports
     .clk_o(clk_o),     // output clk_o
     // Status and control signals
     .reset(reset), // input reset
-    .locked(locked));      // output locked
+    .locked(locked),       // output locked
+   // Clock in ports
+    .clk_i(clk_i));      // input clk_i
 // INST_TAG_END ------ End INSTANTIATION Template ---------

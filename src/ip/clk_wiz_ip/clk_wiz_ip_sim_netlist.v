@@ -1,10 +1,10 @@
-// Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
-// Date        : Sun Oct 28 21:15:12 2018
+// Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
+// Date        : Mon Nov 12 18:43:04 2018
 // Host        : ubuntu running 64-bit Ubuntu 16.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
-//               /home/carson/poly/cpe439/Resistor-Value-Detector/src/ip/clk_wiz_ip/clk_wiz_ip_sim_netlist.v
+//               /home/carson/poly/cpe439/tmp/Resistor-Value-Detector/src/ip/clk_wiz_ip/clk_wiz_ip_sim_netlist.v
 // Design      : clk_wiz_ip
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,17 +12,16 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "clk_wiz_ip,clk_wiz_v5_2_1,{component_name=clk_wiz_ip,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=PLL,num_out_clk=1,clkin1_period=8.0,clkin2_period=10.0,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *) 
 (* NotValidForBitStream *)
 module clk_wiz_ip
-   (clk_i,
-    clk_o,
+   (clk_o,
     reset,
-    locked);
-  input clk_i;
+    locked,
+    clk_i);
   output clk_o;
   input reset;
   output locked;
+  input clk_i;
 
   (* IBUF_LOW_PWR *) wire clk_i;
   wire clk_o;
@@ -38,14 +37,14 @@ endmodule
 
 (* ORIG_REF_NAME = "clk_wiz_ip_clk_wiz" *) 
 module clk_wiz_ip_clk_wiz_ip_clk_wiz
-   (clk_i,
-    clk_o,
+   (clk_o,
     reset,
-    locked);
-  input clk_i;
+    locked,
+    clk_i);
   output clk_o;
   input reset;
   output locked;
+  input clk_i;
 
   wire clk_i;
   wire clk_i_clk_wiz_ip;
@@ -186,8 +185,8 @@ module glbl ();
     reg JTAG_USER_TDO3_GLBL = 1'bz;
     reg JTAG_USER_TDO4_GLBL = 1'bz;
 
-    assign (weak1, weak0) GSR = GSR_int;
-    assign (weak1, weak0) GTS = GTS_int;
+    assign (strong1, weak0) GSR = GSR_int;
+    assign (strong1, weak0) GTS = GTS_int;
     assign (weak1, weak0) PRLD = PRLD_int;
 
     initial begin

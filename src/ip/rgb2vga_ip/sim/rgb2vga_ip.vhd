@@ -69,9 +69,8 @@ ENTITY rgb2vga_ip IS
 END rgb2vga_ip;
 
 ARCHITECTURE rgb2vga_ip_arch OF rgb2vga_ip IS
-  ATTRIBUTE DowngradeIPIdentifiedWarnings : string;
+  ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF rgb2vga_ip_arch: ARCHITECTURE IS "yes";
-
   COMPONENT rgb2vga IS
     GENERIC (
       VID_IN_DATA_WIDTH : INTEGER;
@@ -93,11 +92,13 @@ ARCHITECTURE rgb2vga_ip_arch OF rgb2vga_ip IS
     );
   END COMPONENT rgb2vga;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
-  ATTRIBUTE X_INTERFACE_INFO OF rgb_pData: SIGNAL IS "xilinx.com:interface:vid_io:1.0 vid_in DATA";
-  ATTRIBUTE X_INTERFACE_INFO OF rgb_pVDE: SIGNAL IS "xilinx.com:interface:vid_io:1.0 vid_in ACTIVE_VIDEO";
-  ATTRIBUTE X_INTERFACE_INFO OF rgb_pHSync: SIGNAL IS "xilinx.com:interface:vid_io:1.0 vid_in HSYNC";
-  ATTRIBUTE X_INTERFACE_INFO OF rgb_pVSync: SIGNAL IS "xilinx.com:interface:vid_io:1.0 vid_in VSYNC";
+  ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER OF PixelClk: SIGNAL IS "XIL_INTERFACENAME signal_clock, ASSOCIATED_BUSIF vid_in";
   ATTRIBUTE X_INTERFACE_INFO OF PixelClk: SIGNAL IS "xilinx.com:signal:clock:1.0 signal_clock CLK";
+  ATTRIBUTE X_INTERFACE_INFO OF rgb_pVSync: SIGNAL IS "xilinx.com:interface:vid_io:1.0 vid_in VSYNC";
+  ATTRIBUTE X_INTERFACE_INFO OF rgb_pHSync: SIGNAL IS "xilinx.com:interface:vid_io:1.0 vid_in HSYNC";
+  ATTRIBUTE X_INTERFACE_INFO OF rgb_pVDE: SIGNAL IS "xilinx.com:interface:vid_io:1.0 vid_in ACTIVE_VIDEO";
+  ATTRIBUTE X_INTERFACE_INFO OF rgb_pData: SIGNAL IS "xilinx.com:interface:vid_io:1.0 vid_in DATA";
 BEGIN
   U0 : rgb2vga
     GENERIC MAP (

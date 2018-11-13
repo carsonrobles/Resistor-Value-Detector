@@ -89,7 +89,8 @@ module top (
   // placeholder for now, process data
   img_proc img_proc_i (
     .clk     (pix_clk),
-    .data_i  (vid_data + {6{sw}}),
+    .sw      (sw),
+    .data_i  (vid_data),
     .vde_i   (vid_vde),
     .hsync_i (vid_hsync),
     .vsync_i (vid_vsync),

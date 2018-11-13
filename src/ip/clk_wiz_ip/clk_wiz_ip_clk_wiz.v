@@ -1,3 +1,4 @@
+
 // file: clk_wiz_ip.v
 // 
 // (c) Copyright 2008 - 2013 Xilinx, Inc. All rights reserved.
@@ -55,7 +56,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// CLK_OUT1___200.000______0.000______50.0______109.241_____96.948
+// ___clk_o___200.000______0.000______50.0______109.241_____96.948
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -65,20 +66,23 @@
 `timescale 1ps/1ps
 
 module clk_wiz_ip_clk_wiz 
+
  (// Clock in ports
-  input         clk_i,
   // Clock out ports
   output        clk_o,
   // Status and control signals
   input         reset,
-  output        locked
+  output        locked,
+  input         clk_i
  );
-
   // Input buffering
   //------------------------------------
+wire clk_i_clk_wiz_ip;
+wire clk_in2_clk_wiz_ip;
   IBUF clkin1_ibufg
    (.O (clk_i_clk_wiz_ip),
     .I (clk_i));
+
 
 
 
@@ -88,6 +92,15 @@ module clk_wiz_ip_clk_wiz
   // Instantiation of the MMCM PRIMITIVE
   //    * Unused inputs are tied off
   //    * Unused outputs are labeled unused
+
+  wire        clk_o_clk_wiz_ip;
+  wire        clk_out2_clk_wiz_ip;
+  wire        clk_out3_clk_wiz_ip;
+  wire        clk_out4_clk_wiz_ip;
+  wire        clk_out5_clk_wiz_ip;
+  wire        clk_out6_clk_wiz_ip;
+  wire        clk_out7_clk_wiz_ip;
+
   wire [15:0] do_unused;
   wire        drdy_unused;
   wire        psdone_unused;
@@ -108,13 +121,14 @@ module clk_wiz_ip_clk_wiz
   PLLE2_ADV
   #(.BANDWIDTH            ("OPTIMIZED"),
     .COMPENSATION         ("ZHOLD"),
+    .STARTUP_WAIT         ("FALSE"),
     .DIVCLK_DIVIDE        (1),
     .CLKFBOUT_MULT        (8),
     .CLKFBOUT_PHASE       (0.000),
     .CLKOUT0_DIVIDE       (5),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
-    .CLKIN1_PERIOD        (8.0))
+    .CLKIN1_PERIOD        (8.000))
   plle2_adv_inst
     // Output clocks
    (
@@ -143,17 +157,20 @@ module clk_wiz_ip_clk_wiz
     .LOCKED              (locked_int),
     .PWRDWN              (1'b0),
     .RST                 (reset_high));
-
   assign reset_high = reset; 
 
   assign locked = locked_int;
-
-  // Output buffering
+// Clock Monitor clock assigning
+//--------------------------------------
+ // Output buffering
   //-----------------------------------
 
   BUFG clkf_buf
    (.O (clkfbout_buf_clk_wiz_ip),
     .I (clkfbout_clk_wiz_ip));
+
+
+
 
 
 
