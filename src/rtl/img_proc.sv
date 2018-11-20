@@ -30,8 +30,9 @@ module img_proc (
   );
 
   conv #(
+    .DIM    (3),
     .KERNEL ('{{ 0, -1,  0},
-               {-1,  4, -1},
+               {-1,  5, -1},
                { 0, -1,  0}})
   ) conv_1 (
     .clk    (clk),
@@ -42,6 +43,7 @@ module img_proc (
   );
 
   conv #(
+    .DIM (3),
     .KERNEL ('{{-1, -1, -1},
                {-1,  8, -1},
                {-1, -1, -1}})

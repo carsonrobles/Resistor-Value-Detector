@@ -204,7 +204,7 @@ module img_buf (
   //****************************************
   // BRAM INSTANTIATIONS
   //
-  blk_mem_gen_0 bram0 (
+  blk_mem_gen_ip bram0 (
     .clka  (clk),         // PORT A -- WRITE
     .ena   (ram_sel[0]),  // enable port a with ram select
     .wea   (we),          // shared write enable
@@ -220,7 +220,7 @@ module img_buf (
     .doutb (rdata[0])     // read data out
   );
 
-  blk_mem_gen_0 bram1 (
+  blk_mem_gen_ip bram1 (
     .clka  (clk),         // PORT A -- WRITE
     .ena   (ram_sel[1]),  // enable port a with ram select
     .wea   (we),          // shared write enable
@@ -236,7 +236,7 @@ module img_buf (
     .doutb (rdata[1])     // read data out
   );
 
-  blk_mem_gen_0 bram2 (
+  blk_mem_gen_ip bram2 (
     .clka  (clk),         // PORT A -- WRITE
     .ena   (ram_sel[2]),  // enable port a with ram select
     .wea   (we),          // shared write enable

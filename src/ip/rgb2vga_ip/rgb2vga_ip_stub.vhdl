@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
--- Date        : Mon Nov 12 18:42:10 2018
--- Host        : ubuntu running 64-bit Ubuntu 16.04.5 LTS
+-- Date        : Mon Nov 19 16:48:36 2018
+-- Host        : ubuntu running 64-bit Ubuntu 18.04.1 LTS
 -- Command     : write_vhdl -force -mode synth_stub
---               /home/carson/poly/cpe439/tmp/Resistor-Value-Detector/src/ip/rgb2vga_ip/rgb2vga_ip_stub.vhdl
+--               /home/carson/poly/CPE439/Resistor-Value-Detector/src/ip/rgb2vga_ip/rgb2vga_ip_stub.vhdl
 -- Design      : rgb2vga_ip
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z010clg400-1

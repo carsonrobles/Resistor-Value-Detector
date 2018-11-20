@@ -77,6 +77,7 @@ constant kDlyRstDelay : natural := 32;
 signal aDlyLckd, rDlyRst, rBUFR_Rst, rLockLostRst : std_logic;
 signal rDlyRstCnt : natural range 0 to kDlyRstDelay - 1 := kDlyRstDelay - 1;
 
+signal PixelClkDiv : std_logic;
 signal clkfbout_hdmi_clk, CLK_IN_hdmi_clk, CLK_OUT_1x_hdmi_clk, CLK_OUT_5x_hdmi_clk : std_logic;
 signal clkout1b_unused, clkout2_unused, clkout2b_unused, clkout3_unused, clkout3b_unused, clkout4_unused, clkout5_unused, clkout6_unused,
 drdy_unused, psdone_unused, clkfbstopped_unused, clkinstopped_unused, clkfboutb_unused, clkout0b_unused, clkout1_unused : std_logic;
@@ -234,17 +235,30 @@ SerialClkBuffer: BUFIO
       O => SerialClk, -- 1-bit output: Clock output (connect to I/O clock loads).
       I => CLK_OUT_5x_hdmi_clk  -- 1-bit input: Clock input (connect to an IBUF or BUFMR).
    );
+
+PixelClkDivide: clk_div
+  generic map (
+    N => 5
+  )
+  port map (
+    clk_i => CLK_OUT_5x_hdmi_clk,
+    clk_o => PixelClkDiv
+  );
+
 -- 1x slow parallel clock
-PixelClkBuffer: BUFR
-   generic map (
-      BUFR_DIVIDE => "5",   -- Values: "BYPASS, 1, 2, 3, 4, 5, 6, 7, 8" 
-      SIM_DEVICE => "7SERIES"  -- Must be set to "7SERIES" 
-   )
+-- TODO (carson) BUFR->BUFG
+PixelClkBuffer: BUFG
+   --generic map (
+      --BUFG_DIVIDE => "5",   -- Values: "BYPASS, 1, 2, 3, 4, 5, 6, 7, 8" 
+      --SIM_DEVICE => "7SERIES"  -- Must be set to "7SERIES" 
+   --)
    port map (
-      O => PixelClk,     -- 1-bit output: Clock output port
-      CE => '1',   -- 1-bit input: Active high, clock enable (Divided modes only)
-      CLR => rBUFR_Rst, -- 1-bit input: Active high, asynchronous clear (Divided modes only)        
-      I => CLK_OUT_5x_hdmi_clk      -- 1-bit input: Clock buffer input driven by an IBUF, MMCM or local interconnect
+      I => PixelClkDiv,
+      O => PixelClk      -- 1-bit output: Clock output port
+      --CE => '1',   -- 1-bit input: Active high, clock enable (Divided modes only)
+      --CLR => rBUFR_Rst, -- 1-bit input: Active high, asynchronous clear (Divided modes only)        
+      --I => CLK_OUT_5x_hdmi_clk      -- 1-bit input: Clock buffer input driven by an IBUF, MMCM or local interconnect
+      --I => PixelClkDiv
    );     
 rBUFR_Rst <= rMMCM_LckdRisingFlag; --pulse CLR on BUFR one the clock returns
 
