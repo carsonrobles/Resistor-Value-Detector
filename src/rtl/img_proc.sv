@@ -1,3 +1,5 @@
+`include "pixel_pkg.svh"
+
 module img_proc (
   input  wire         clk,
 
