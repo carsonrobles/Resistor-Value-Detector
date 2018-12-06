@@ -2,7 +2,7 @@
 
 module conv #(
   parameter int                 DIM               = 3,
-  parameter logic signed [31:0] KERNEL [DIM][DIM] = '{default : '0}
+  parameter logic signed [31:0] KERNEL [DIM][DIM] = '{default : '0}   // 28.4 fixed point
 ) (
   input wire     clk,
   input wire     rst,
@@ -10,35 +10,47 @@ module conv #(
   input wire     en,
 
   axis_if.slave  axis_i,   // slave  -- input  chunk data
-  axis_if.master axis_o    // master -- output pixel data
+  axis_if.master axis_o    // master -- output chunk data
 );
+
+  localparam int FRAC_BITS = 4;
+
+  logic signed [31:0] data_red [DIM][DIM];
+  logic signed [31:0] data_grn [DIM][DIM];
+  logic signed [31:0] data_blu [DIM][DIM];
+
+  // convert data in to 28.4 fixed point
+  always_comb begin
+    int i, j;
+
+    for (i = 0; i < DIM; i += 1)
+      for (j = 0; j < DIM; j += 1) begin
+        data_red[i][j] = {axis_i.data[i][j].red, {FRAC_BITS{1'b0}}};
+        data_grn[i][j] = {axis_i.data[i][j].grn, {FRAC_BITS{1'b0}}};
+        data_blu[i][j] = {axis_i.data[i][j].blu, {FRAC_BITS{1'b0}}};
+      end
+  end
 
   logic signed [31:0] mul_red [DIM][DIM];
   logic signed [31:0] mul_grn [DIM][DIM];
   logic signed [31:0] mul_blu [DIM][DIM];
 
-  //always_comb begin
   always_ff @ (posedge clk) begin
     int i, j;
 
-    if (axis_i.ok) begin
-      for (i = 0; i < DIM; i += 1) begin
+    if (axis_i.ok)
+      for (i = 0; i < DIM; i += 1)
         for (j = 0; j < DIM; j += 1) begin
-          mul_red[i][j] <= axis_i.data[i][j].red * KERNEL[i][j];
-          mul_grn[i][j] <= axis_i.data[i][j].grn * KERNEL[i][j];
-          mul_blu[i][j] <= axis_i.data[i][j].blu * KERNEL[i][j];
+          mul_red[i][j] <= (data_red[i][j] * KERNEL[i][j]) >> FRAC_BITS;
+          mul_grn[i][j] <= (data_grn[i][j] * KERNEL[i][j]) >> FRAC_BITS;
+          mul_blu[i][j] <= (data_blu[i][j] * KERNEL[i][j]) >> FRAC_BITS;
         end
-      end
-    end
   end
 
   pixel_pkg::pixel_t chunk_org [DIM][DIM];
 
-  always_ff @ (posedge clk) begin
-    if (axis_i.ok) begin
-      chunk_org <= axis_i.data;
-    end
-  end
+  always_ff @ (posedge clk)
+    if (axis_i.ok) chunk_org <= axis_i.data;
 
   logic vld_tmp = 0;
 
@@ -72,22 +84,30 @@ module conv #(
     end
   end
 
+  logic signed [27:0] sum_red_int;
+  logic signed [27:0] sum_grn_int;
+  logic signed [27:0] sum_blu_int;
+
   pixel_pkg::pixel_t pixel_add;
 
-  // cap final sum value
   always_comb begin
-    pixel_add.red = (sum_red > 255) ? 255 : ((sum_red < 0) ? 0 : sum_red);
-    pixel_add.grn = (sum_grn > 255) ? 255 : ((sum_grn < 0) ? 0 : sum_grn);
-    pixel_add.blu = (sum_blu > 255) ? 255 : ((sum_blu < 0) ? 0 : sum_blu);
+    // get only integral portion of sum
+    sum_red_int = sum_red[31:4];
+    sum_grn_int = sum_grn[31:4];
+    sum_blu_int = sum_blu[31:4];
+
+    // limit range of final sum value
+    pixel_add.red = (sum_red_int > 255) ? 255 : ((sum_red_int < 0) ? 0 : sum_red_int);
+    pixel_add.grn = (sum_grn_int > 255) ? 255 : ((sum_grn_int < 0) ? 0 : sum_grn_int);
+    pixel_add.blu = (sum_blu_int > 255) ? 255 : ((sum_blu_int < 0) ? 0 : sum_blu_int);
   end
 
-  // output data and valid
+  // register output data and valid
   always_ff @ (posedge clk) begin
     axis_o.data <= chunk_org;
     axis_o.vld  <= vld_tmp;
 
-    if (en)
-      axis_o.data[DIM/2][DIM/2] <= pixel_add;
+    if (en) axis_o.data[DIM/2][DIM/2] <= pixel_add;
   end
 
 endmodule

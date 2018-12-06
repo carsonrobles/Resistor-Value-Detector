@@ -14,10 +14,15 @@ module tb;
   axis_if #( .DATA_TYPE (pixel_pkg::chunk_t) ) axis_o_n ();
 
   conv #(
-    .KERNEL ('{
+    /*.KERNEL ('{
       {-1, -1, -1},
       {-1,  8, -1},
       {-1, -1, -1}
+    })*/
+    .KERNEL ('{
+      {'b0001, 'b0010, 'b0001},
+      {'b0010, 'b0100, 'b0010},
+      {'b0001, 'b0010, 'b0001}
     })
   ) dut (
     .clk    (clk),
@@ -25,21 +30,6 @@ module tb;
     .en     (1),
     .axis_i (axis_i.slave),
     .axis_o (axis_o.master)
-  );
-
-  conv_new #(
-    .DIM    (3),
-    .KERNEL ('{
-      {-1, -1, -1},
-      {-1,  8, -1},
-      {-1, -1, -1}
-    })
-  ) dut_n (
-    .clk    (clk),
-    .rst    (rst),
-    .en     (1),
-    .axis_i (axis_i_n.slave),
-    .axis_o (axis_o_n.master)
   );
 
   always_latch clk <= #20 ~clk;

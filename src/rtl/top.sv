@@ -89,7 +89,7 @@ module top (
   // placeholder for now, process data
   img_proc img_proc_i (
     .clk     (pix_clk),
-    .sw      (sw),
+    .fsel    (sw),
     .data_i  (vid_data),
     .vde_i   (vid_vde),
     .hsync_i (vid_hsync),
@@ -120,6 +120,6 @@ module top (
 
   assign HDMI_HPD    = 1;
   assign HDMI_OUT_EN = 0;
-  assign led         = {hdmi_clk_lck, pix_clk_lck, vid_vsync, vga_vsync};
+  assign led         = {hdmi_clk_lck, pix_clk_lck, vid_hsync, vga_hsync};
 
 endmodule
